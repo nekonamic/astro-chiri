@@ -3,8 +3,6 @@ services:
     build:
       context: .
     container_name: astro-app
-    ports:
-      - "4321:4321"
     restart: unless-stopped
     labels:
       - "traefik.enable=true"
