@@ -27,18 +27,18 @@ const linkCardEnabled: boolean = match[1] === 'true'
 function toggleAstroAdapter(comment: boolean) {
   const astroConfig = fs.readFileSync(astroConfigPath, 'utf-8').split('\n')
 
-  // Find the import line for netlify adapter (including commented lines)
+  // Find the import line for cloudflare adapter (including commented lines)
   const importIndex = astroConfig.findIndex(
-    (line) => line.trim().includes('import') && line.includes('netlify')
+    (line) => line.trim().includes('import') && line.includes('cloudflare')
   )
 
   // Find the adapter line (including commented lines)
   const adapterIndex = astroConfig.findIndex(
-    (line) => line.trim().includes('adapter:') && line.includes('netlify')
+    (line) => line.trim().includes('adapter:') && line.includes('cloudflare')
   )
 
   if (importIndex === -1 || adapterIndex === -1) {
-    console.error('Could not find netlify adapter import or configuration')
+    console.error('Could not find cloudflare adapter import or configuration')
     return
   }
 
