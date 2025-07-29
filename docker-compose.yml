@@ -6,3 +6,15 @@ services:
     ports:
       - "4321:4321"
     restart: unless-stopped
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.blog.rule=Host(`blog.s.inf.li`)"
+      - "traefik.http.routers.blog.entrypoints=websecure"
+      - "traefik.http.routers.blog.tls.certresolver=myresolver"
+      - "traefik.http.services.blog.loadbalancer.server.port=4321"
+    networks:
+      - traefik
+
+networks:
+  traefik:
+    external: true
