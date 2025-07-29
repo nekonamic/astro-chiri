@@ -3,7 +3,7 @@ export const prerender = false
 import type { APIContext } from 'astro'
 
 export async function GET(context: APIContext) {
-  const host = context.request.headers.get('host') || '127.0.0.1:4321'
+  const host = context.request.headers.get('host') || '0.0.0.0:4321'
   const url = new URL(context.request.url, `http://${host}`)
   const target = url.searchParams.get('url')
 
